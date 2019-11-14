@@ -1,158 +1,23 @@
 <div class="album py-5 bg-light">
     <div class="container">
-        <h2 class="text-center">Peliculas: </h2>
-        <div class="row">
-            <div class="col-md-4">
+        <h2 class="text-center" *ngIf="movies">Peliculas: {{movies.name}}</h2>
+        <h2 class="text-center" *ngIf="movies === null">Peliculas</h2>
+        <h4 class="text-center" *ngIf="isLoading">Cargando...</h4>
+        <div class="row" *ngIf="movies">
+            <div class="col-md-4" *ngFor="let movie of movies.movieEntityList;">
                 <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
+                    <img src="../../assets/images/movie.jpg" width="100%" height="225" background="#55595c"
+                        color="#eceeef" class="card-img-top" text="Thumbnail">
                     <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">{{movie.name}}</h5>
+                        <p class="card-text">
+                            Calificacion: {{movie.scoreCounter}}
+                        </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="loadMovieInfo()">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary"
+                                    (click)="goToInfoMovie(movie)">Información Pelicula</button>
                             </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
                 </div>
@@ -164,21 +29,103 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-movie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" *ngIf="movieSelected">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Detalle Pelicula</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <h4><strong>Calificación:</strong> {{movieSelected.classificationEntity.name}}</h4>
+                <h4><strong>Titulo:</strong> {{movieSelected.name}}</h4>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Actores</h5>
+                        <p class="card-text" *ngFor="let actor of movieSelected.actorList;">
+                            Nombre: {{actor.name}}, Pais: {{actor.country}}</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Directores</h5>
+                        <p class="card-text" *ngFor="let director of movieSelected.productorList;">
+                            Nombre: {{director.name}}, Pais: {{director.country}}</p>
+                    </div>
+                </div>
+                <h4>Puntuación: {{getScoreMovie(movieSelected.score, movieSelected.scoreCounter)}}</h4>
+                <div class="col panel-commentary">
+                    <div class="alert alert-secondary" role="alert"
+                        *ngFor="let comment of movieSelected.commentEntityList;">
+                        <p>Creado por: {{comment.userEntity.userName}}</p>
+                        <p>Fecha: {{comment.creation}}</p>
+                        {{comment.description}}
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="closeModal()">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="showModalScore()">Calificar Pelicula</button>
+                <button type="button" class="btn btn-success" (click)="showModalComment()">Crear Comentario</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-score" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="movieSelected">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Calificar pelicula</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Calificación</label>
+                    <select [(ngModel)]="calificationMovie" class="form-control" id="exampleFormControlSelect1">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="scoreMovie()">Calificar Pelicula</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-comment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="movieSelected">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear comentario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Comentario</label>
+                    <textarea [(ngModel)]="commentUser" class="form-control" id="exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="sendComment()">Publicar</button>
             </div>
         </div>
     </div>

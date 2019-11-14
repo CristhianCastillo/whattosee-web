@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from '../services/register.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -30,15 +31,32 @@ export class RegisterComponent implements OnInit {
       this.registerService.registerUser(user).subscribe((result: any) => {
         if (result.status === "00") {
           console.log('Usuario registrado correctamente, Inici Sesión');
+          Swal.fire({
+            title: 'Registro',
+            text: 'Usuario registrado correctamente, Inicia Sesión',
+            icon: 'success',
+          });
         } else {
-          console.log('Ocurrio un problema')
+          Swal.fire({
+            title: 'Registro',
+            text: 'No se ha podido registrar el usuario. ' + result.result,
+            icon: 'error',
+          });
         }
       },
         (err) => {
-          console.log(err.message);
+          Swal.fire({
+            title: 'Registro',
+            text: 'No se ha podido registrar el usuario. ' + err.message,
+            icon: 'error',
+          });
         });
     } else {
-      console.log('Debe ingresar todos los datos del formulario.');
+      Swal.fire({
+        title: 'Registro',
+        text: 'Debe ingresar todos los datos del formulario',
+        icon: 'warning',
+      });
     }
   }
 

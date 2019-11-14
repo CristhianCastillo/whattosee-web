@@ -3,163 +3,28 @@
         <h2 class="text-center">Foros</h2>
         <div class="container">
             <div class="row">
-              <div class="col text-center">
-                <button type="button" class="btn btn-sm btn-outline-secondary text-center" (click)="loadMovieInfo('createForoModal')">Crear Foro</button>
-              </div>
-            </div>
-          </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="loadMovieInfo('editForoModal')">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
+                <h4 *ngIf="isLoading">Cargando...</h4>
+                <div class="col text-center">
+                    <button type="button" class="btn btn-sm btn-outline-secondary text-center"
+                        (click)="createForo()">Crear Foro</button>
                 </div>
             </div>
-            <div class="col-md-4">
+        </div>
+        <div class="row" *ngIf="foros">
+            <div class="col-md-4" *ngFor="let foro of foros;">
                 <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
+                    <img src="../../assets/images/forum.png" width="100%" height="225" background="#55595c"
+                        color="#eceeef" class="card-img-top" text="Thumbnail">
                     <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">{{foro.name}}</h5>
+                        <p class="card-text">
+                            Creado en: {{foro.creation}}
+                        </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary"
+                                    (click)="showCommentaries(foro)">Ver Comentarios</button>
                             </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top"
-                        text="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
                 </div>
@@ -168,8 +33,8 @@
     </div>
 </div>
 
-<!-- Modals: Create - Edit -->
-<div class="modal fade" id="createForoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -179,30 +44,77 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <div class="form-group">
+                    <label for="name">Nombre Foro</label>
+                    <input [(ngModel)]="nameForo" type="text" class="form-control" id="name"
+                        placeholder="Ingresa nombre">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Pelicula</label>
+                    <select [(ngModel)]="movieSelected" class="form-control" id="exampleFormControlSelect1">
+                        <option value="" selected>Selecciona una opcion</option>
+                        <option *ngFor="let movie of movies;" [value]="movie.id">{{movie.name}}</option>
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="closeModal('createForoModal')">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="saveForo()">Guardar</button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="editForoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" *ngIf="foroSelected">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Foro</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Comentarios Foro</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <div class="col panel-commentary">
+                    <div class="alert alert-secondary" role="alert"
+                        *ngFor="let comment of foroSelected.commentDiscussionEntityList;">
+                        <p>Creado por: {{comment.userEntity.userName}}</p>
+                        <p>Fecha: {{comment.creation}}</p>
+                        {{comment.description}}
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="closeModal('editForoModal')">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="showCreateComment()">Crear
+                    Comentario</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-comment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear comentario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Comentario</label>
+                    <textarea [(ngModel)]="commentUser" class="form-control" id="exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="sendComment()">Publicar</button>
             </div>
         </div>
     </div>

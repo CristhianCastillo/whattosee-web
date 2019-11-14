@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  // public URL: string = 'http://whattosee.ml:8088';
-  public URL: string = 'http://localhost:8088';
+  public URL: string = 'http://whattosee.ml:8088';
+  // public URL: string = 'http://localhost:8088';
 
   constructor(public http: HttpClient) { }
 

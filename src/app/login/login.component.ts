@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -28,18 +29,30 @@ export class LoginComponent implements OnInit {
       }
       this.loginService.loginUser(user).subscribe((result: any) => {
         if (result.status === "00") {
-          console.log('Usuario valido');
           localStorage.setItem('tokenUser', result.result.token);
-          this.router.navigate(['/menu']).then(() => { });
+          localStorage.setItem('idUser', result.result.id);
+          this.router.navigate(['menu-genders']).then(() => { });
         } else {
-          console.log('Ocurrio un problema')
+          Swal.fire({
+            title: 'Login',
+            text: 'El usuario no se ha podio auntenticar: ' + result.result,
+            icon: 'error',
+          });
         }
       },
         (err) => {
-          console.log(err.message);
+          Swal.fire({
+            title: 'Login',
+            text: 'El usuario no se ha podio auntenticar: ' + err.message,
+            icon: 'error',
+          });
         });
     } else {
-      console.log('Debe ingresar todos los datos del formulario.');
+      Swal.fire({
+        title: 'Login',
+        text: 'Debe ingresar todos los datos del formulario',
+        icon: 'warning',
+      });
     }
   }
 

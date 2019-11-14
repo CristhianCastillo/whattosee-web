@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
         password: this.registerForm.value['password']
       }
       this.registerService.registerUser(user).subscribe((result: any) => {
-        if (result.status = "00") {
+        if (result.status === "00") {
           console.log('Usuario registrado correctamente, Inici Sesión');
         } else {
           console.log('Ocurrio un problema')

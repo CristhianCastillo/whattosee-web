@@ -12,6 +12,12 @@ import { LoginService } from './services/login.service';
 import { MovieService } from './services/movie.service';
 import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from "@angular/common/http";
+import { HeaderMenuComponent } from './header-menu/header-menu.component';
+import { FooterComponent } from './footer/footer.component';
+import { MenuMoviesComponent } from './menu-movies/menu-movies.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { MenuDiscussionsComponent } from './menu-discussions/menu-discussions.component';
+import { MenuMoviesGendersComponent } from './menu-movies-genders/menu-movies-genders.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,13 @@ import { HttpClientModule } from "@angular/common/http";
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    HeaderMenuComponent,
+    FooterComponent,
+    MenuMoviesComponent,
+    ConfigurationComponent,
+    MenuDiscussionsComponent,
+    MenuMoviesGendersComponent
   ],
   imports: [
     BrowserModule,
